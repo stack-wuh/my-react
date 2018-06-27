@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>React Single Page App</title>
+  <script src="./react.js"></script>
+  <script src="./react-dom.js"></script>
+  <script src="./browser.min.js"></script>
+  <style>
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <script type="text/babel">
+      var father = document.querySelector('#container')
+      ReactDOM.render(
+        <div>hello</div>,
+        father
+      )
+  </script>
+</body>
+</html>
