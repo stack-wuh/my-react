@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./react.js"></script>
+  <script src="./react-dom.js"></script>
+  <script src="./browser.min.js"></script>
+</head>
+<body>
+  <div id="container"></div>
+  <script type="text/babel">
+    var LikeButton = React.createClass({
+      getInitialState:function(){
+        return {liked:false}
+      },
+      handleClick:function(event){
+        this.setState({liked:!this.state.liked})
+      },
+      render:function(){
+        var text = this.state.liked ? 'like' : 'haven\’t liked'
+        return(
+          <p onClick={this.handleClick}>
+            you {text} this click to change
+          </p>
+        )
+      }
+    })
+    ReactDOM.render(
+      <LikeButton />,
+      document.getElementById('container')
+    )
+  </script> 
+</body>
+</html>

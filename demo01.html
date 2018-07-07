@@ -13,10 +13,26 @@
 </head>
 <body>
   <div id="container"></div>
+  
+  
   <script type="text/babel">
+      var names = ['Alice','Bob','Kate']
+      var arr = [
+        <h1>Hello World</h1>,
+        <h1>React is awesome</h1>,
+      ]
       var father = document.querySelector('#container')
       ReactDOM.render(
-        <div>hello</div>,
+        <div>Hello World
+        {
+          names.map(function(name,index){
+            return <ul key={index}>
+              <li>Hello,{name}!</li>
+            </ul>
+          })
+        }
+        <div key={1}>{arr}</div>
+        </div>,
         father
       )
   </script>
