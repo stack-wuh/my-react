@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./react.js"></script>
+  <script src="./react-dom.js"></script>
+  <script src="./browser.min.js"></script>
+</head>
+<body>
+  <div id="container"></div>
+  <script type="text/babel">
+    class LoginControl extends React.Component{
+      constructor(props){
+        super(props)
+        this.state = {isLogin:false}
+        this.handleClickLogin = this.handleClickLogin.bind(this)
+        this.handleClickLogout = this.handleClickLogout.bind(this)
+      }
+      handleClickLogin(){
+        this.setState({isLogin:true})
+      }
+      handleClickLogout(){
+        this.setState({isLogin:false})
+      }
+      render(){
+        const isLogin = this.state.isLogin
+        let button
+        if(isLogin){
+          button = <LogoutButton onClick={this.handleClickLogout}>logout1</LogoutButton>
+        }else{
+          button = <LogInButton onClick={this.handleClickLogin}>login1</LogInButton>
+        }
+        return (
+          <div>
+            <Greeting isLogin = {isLogin} />
+            {button}
+          </div>
+        )
+      }
+    }
+    function LogInButton(props){
+      console.log(props)
+      return (
+        <button onClick={props.onClick}>login1</button>
+      )
+    }
+    function LogoutButton(props){
+      console.log(props)
+      return (
+        <button onClick={props.onClick}>logout1</button>
+      )
+    }
+    function GuestGreeting(props){
+      return <h1>please sing up</h1>
+    }
+    function UserGreeting(props){
+      return <h1>Welcome back</h1>
+    }
+    function Greeting(props){
+      const isLogin = props.isLogin
+      if(isLogin){
+        return <UserGreeting />
+      }else{
+        return <GuestGreeting />
+      }
+    }
+    ReactDOM.render(
+      <LoginControl />,
+      document.getElementById('container')
+    )
+  </script>
+</body>
+</html>
