@@ -21,7 +21,7 @@
       }
       componentDidMount(){
         this.timerId = setInterval(()=> this.tick(),1000)
-        console.log('is mount')
+        console.log('is mount',)
         this.setState((prev,props)=>{
           console.log(prev,props)
         })
