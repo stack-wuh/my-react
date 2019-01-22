@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
   <script src="./react-dom.js"></script>
   <script src="./browser.min.js"></script>
 </head>
+
 <body>
   <div id="container"></div>
   <script type="text/babel">
@@ -17,14 +19,18 @@
         return {liked:false}
       },
       handleClick:function(event){
+        console.log(event)
         this.setState({liked:!this.state.liked})
       },
       render:function(){
         var text = this.state.liked ? 'like' : 'haven\’t liked'
         return(
-          <p onClick={this.handleClick}>
-            you {text} this click to change
-          </p>
+          <div>
+            <p>
+              you {text} this click to change
+            </p>
+            <button onClick={this.handleClick} type="button" name="button">clickMe</button>
+          </div>
         )
       }
     })
@@ -32,6 +38,7 @@
       <LikeButton />,
       document.getElementById('container')
     )
-  </script> 
+  </script>
 </body>
+
 </html>

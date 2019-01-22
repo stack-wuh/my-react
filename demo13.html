@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>document</title>
+</head>
+
+<body>
+  <section>
+    <section class="main">
+
+    </section>
+  </section>
+</body>
+
+<script type="text/javascript">
+  const wrapper = document.querySelector('.main')
+  const createDOMFromString = (domString) => {
+    const div = document.createElement('div')
+    div.innerHTML = domString
+    return div
+  }
+  class LikeButton {
+    constructor() {
+      this.state = {
+        isLiked: false
+      }
+      this.handleClickTextChange = this.handleClickTextChange.bind(this)
+      this.handleChangeText = this.handleChangeText.bind(this)
+    }
+    setState(state) {
+      this.state = state
+      this.el = this.render()
+    }
+    handleClickTextChange() {
+      let text = document.querySelector('.like-text')
+      this.state.isLieked = !this.state.isLieked
+      text.innerHTML = this.state.isLieked ? '取消' : '点赞'
+    }
+
+    handleChangeText() {
+      this.setState({
+        isLiked: !this.state.isLiked
+      })
+    }
+    render() {
+      this.el = createDOMFromString(`
+        <button class="like-button">
+          <span class="like-text">${this.state.isLiked}</span>
+        </button>
+      `)
+      this.el.addEventListener('click', this.handleChangeText, false)
+      // this.el.addEventListener('click', this.handleClickTextChange, false)
+      return this.el
+    }
+  }
+  window.onload = function() {
+    const likes1 = new LikeButton()
+    wrapper.appendChild(likes1.render())
+  }
+</script>
+
+</html>

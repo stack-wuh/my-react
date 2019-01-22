@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <section>
+
+  </section>
+</body>
+<script type="text/javascript">
+  class Component {
+    setState(state) {
+      const OldEl = this.el
+      this.state = state
+      this._renderDOM()
+      if (this.onStateChange) this.onStateChange(oldEl, this.el)
+    }
+    _renderDOM() {
+      this.el = createDOMFromString(this.render())
+      if (this.onClick) {
+        this.el.addEventListener('click', this.onClick.bind(this), false)
+      }
+      return this.el
+    }
+  }
+</script>
+
+</html>
